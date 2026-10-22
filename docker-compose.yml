@@ -12,7 +12,7 @@ services:
       - ./backup_don_jose.sql:/docker-entrypoint-initdb.d/backup_don_jose.sql:ro
 
   dolibarr-web:
-    image: tuxgasy/dolibarr:latest
+    image: tuxgasy/dolibarr:19.0.2
     restart: always
     ports:
       - "8080:80"
@@ -23,6 +23,7 @@ services:
       DOLI_DB_PASSWORD: dolibarpass
       DOLI_ADMIN_LOGIN: admin
       DOLI_ADMIN_PASSWORD: adminpassword
+      DOLI_URL_ROOT: http://localhost:8080
     depends_on:
       - dolibarr-db
     volumes:
